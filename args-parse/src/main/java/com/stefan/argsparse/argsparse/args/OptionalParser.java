@@ -7,6 +7,6 @@ import java.util.List;
  * @Date 2022/9/23 0:52
  * @Version 1.0
  */
-interface OptionalParser {
-    Object parse(List<String> arguments, Option option);
+interface OptionalParser<T> {
+    T parse(List<String> arguments, Option option) throws TooManyArgumentsException;
 }

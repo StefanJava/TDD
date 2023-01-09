@@ -42,7 +42,8 @@ public class ArgsTest {
         assertEquals(8080, option.port());
     }
 
-    record IntOption(@Option("p") int port) {}
+    record IntOption(@Option("p") int port) {
+    }
 
     //     - String -d /usr/logs
 
@@ -53,7 +54,8 @@ public class ArgsTest {
         assertEquals("/usr/logs", option.directory());
     }
 
-    record StringOption(@Option("d") String directory) {}
+    record StringOption(@Option("d") String directory) {
+    }
 
     // happy path
     // Multi options: -l -p 8080 -d /usr/logs
@@ -71,10 +73,14 @@ public class ArgsTest {
 
     // sad path:
     // TODO:   - bool -l t / -l t f
+
+    // default value
+    // TODO:   - bool : false
+
+    // sad path:
     // TODO:   - int -p / -p 8080 8081
     // TODO:   - string -d / -d /usr/logs /usr/var
     // default value
-    // TODO:   - bool : false
     // TODO:   - int : 0
     // TODO:   - string : ""
 

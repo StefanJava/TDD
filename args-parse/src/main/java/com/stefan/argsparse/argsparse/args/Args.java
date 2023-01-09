@@ -19,14 +19,20 @@ public class Args {
             List<String> arguments = Arrays.asList(args);
             Constructor<?> declaredConstructor = optionsClass.getDeclaredConstructors()[0];
 
-            Object[] values = Arrays.stream(declaredConstructor.getParameters()).map(it -> parseOptions(arguments, it)).toArray();
+            Object[] values = Arrays.stream(declaredConstructor.getParameters()).map(it -> {
+                try {
+                    return parseOptions(arguments, it);
+                } catch (TooManyArgumentsException e) {
+                    throw new RuntimeException(e);
+                }
+            }).toArray();
             return (T) declaredConstructor.newInstance(values);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static Object parseOptions(List<String> arguments, Parameter parameter) {
+    private static Object parseOptions(List<String> arguments, Parameter parameter) throws TooManyArgumentsException {
         return PARSER.get(parameter.getType()).parse(arguments, parameter.getAnnotation(Option.class));
     }
 

@@ -7,10 +7,12 @@ import java.util.List;
  * @Date 2022/9/23 0:52
  * @Version 1.0
  */
-class BooleanOptionParser implements OptionalParser {
+class BooleanOptionParser implements OptionalParser<Boolean> {
 
     @Override
-    public Object parse(List<String> arguments, Option option) {
-        return arguments.contains("-" + option.value());
+    public Boolean parse(List<String> arguments, Option option) throws TooManyArgumentsException {
+        int index = arguments.indexOf("-" + option.value());
+        if (index + 1 < arguments.size() && !arguments.get(index + 1).startsWith("-")) throw new TooManyArgumentsException(option.value());
+        return index != -1;
     }
 }
