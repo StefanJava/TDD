@@ -1,8 +1,8 @@
-package com.stefan.argsparse.argsparse.args;
+package com.stefan.argsparse.argsparse.args.exceptions;
 
 public class TooManyArgumentsException extends RuntimeException {
 
-    private String option;
+    private final String option;
 
     public TooManyArgumentsException(String value) {
         option = value;

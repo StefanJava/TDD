@@ -1,5 +1,7 @@
 package com.stefan.argsparse.argsparse.args;
 
+import com.stefan.argsparse.argsparse.args.exceptions.TooManyArgumentsException;
+
 import java.util.List;
 
 /**

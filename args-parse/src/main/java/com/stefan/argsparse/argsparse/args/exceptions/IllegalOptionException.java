@@ -1,4 +1,4 @@
-package com.stefan.argsparse.argsparse.args;
+package com.stefan.argsparse.argsparse.args.exceptions;
 
 public class IllegalOptionException extends RuntimeException {
 

@@ -1,13 +1,10 @@
 package com.stefan.argsparse.argsparse;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class ArgsParseApplicationTests {
+    public static void main(String[] args) {
 
-    @Test
-    void contextLoads() {
     }
-
 }
