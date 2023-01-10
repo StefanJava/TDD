@@ -11,6 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BooleanOptionParserTest {
 
     @Test
+    public void should_set_boolean_option_to_true_if_flag_present() {
+        ArgsTest.BooleanOption option = Args.parse(ArgsTest.BooleanOption.class, "-l");
+
+        assertTrue(option.logging());
+    }
+
+    @Test
     public void should_not_accept_extra_argument_for_boolean_option() {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> new BooleanOptionParser().parse(Arrays.asList("-l", "t"), option("l")));

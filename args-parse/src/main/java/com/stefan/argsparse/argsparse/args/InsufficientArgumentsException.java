@@ -1,10 +1,10 @@
 package com.stefan.argsparse.argsparse.args;
 
-public class TooManyArgumentsException extends RuntimeException {
+public class InsufficientArgumentsException extends RuntimeException {
 
     private String option;
 
-    public TooManyArgumentsException(String value) {
+    public InsufficientArgumentsException(String value) {
         option = value;
     }
 
